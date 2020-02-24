@@ -21,22 +21,22 @@ def asyncDemo(ip, passwd):
     ##########################################################
     # before calling asyncStart()
     # the group will read as sync (every time read will block)
-    # print('sync (default) mode :')
-    # for i in range(40):
-    #     result = asyncGroup.results_dict
-    #     itc = int(result.get('ESM_DATA.ESM_INFOS[1].TICK_COUNT', 0))
-    #     currentStamp = time.time()
-    #     print(
-    #         'tickCount:' + str(itc) + '----A:' + str(result.get('A', 0)) + '-----' + str(currentStamp - lastStamp))
-    #     lastStamp = currentStamp
-    #
-    # print('*'*50)
+    print('sync (default) mode :')
+    for i in range(40):
+        result = asyncGroup.results_dict
+        itc = int(result.get('ESM_DATA.ESM_INFOS[1].TICK_COUNT', 0))
+        currentStamp = time.time()
+        print(
+            'tickCount:' + str(itc) + '----A:' + str(result.get('A', 0)) + '-----' + str(currentStamp - lastStamp))
+        lastStamp = currentStamp
+
+    print('*'*50)
     # ##########################################################
     #
 
 
     # call this will change to async mode
-    poolSize = 50
+    poolSize = 20
     asyncGroup.asyncStart(poolSize=poolSize)
     print('async mode (with pool size = {}):'.format(poolSize))
     lastValue = 0

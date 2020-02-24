@@ -163,7 +163,7 @@ class AsyncRead(threading.Thread):
                 self.ReadGroup.__reFreshCount = 0
                 self.pause = False
                 rcvTick = int(Result['ESM_DATA.ESM_INFOS[1].TICK_COUNT'])
-                if rcvTick > self._updatedTick:
+                if rcvTick > self._updatedTick or rcvTick < self._updatedTick -10000:
                     self.ReadGroup._Results = Result
                     self._updatedTimeStamp = thisTimestamp
                     self._updatedId = id
